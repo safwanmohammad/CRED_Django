@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/a076d05399.js' %}"></script>
+</head>
+<body>
+
+
+
+
+
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
+
+
+
+
+<div class="container-fluid register">
+	<div class="row ">
+		<h2 class="mmnhead">Simple crud operations</h2>
+	</div>
+    <div class="row">
+        <div class="col-md-3 register-left">
+            <img alt="" src="{% static 'image/logo-back-remove.png' %}"/>
+            <h1><b style="color: red;">W</b><b style="color: orange;">E</b><b style="color: yellow;">L</b><b
+                    style="color:green;">C</b><b style="color: white;">O</b><b style="color: indigo;">M</b><b
+                    style="color: violet;">E</b></h1>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <table class="table table-light">
+                    <thead>
+                      <tr>
+                        <th scope="col">SL_NO</th>
+                        <th scope="col">ITEM_NAME</th>
+                        <th scope="col">DESCRIPTION</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        {% for i in context %}
+                        <td>{{i.SL_NO}}</td>
+                        <td>{{i.ITEM_NAME}}</td>
+                        <td>{{i.DESCRIPTION}}</td>
+                        {% endfor %}
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>

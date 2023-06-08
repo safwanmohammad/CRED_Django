@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <script src="{% static 'js/a076d05399.js' %}"></script>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			{% if messages %}
+          {% for message in messages %}
+		  <div class="alert alert-{{message.tags}}">{{message}}</div>
+          {% endfor %}
+        {% endif %}
+		</div>
+	</div>
+<div class="container-fluid register">
+	<div class="row ">
+		<h2 class="mmnhead text-warning">Simple crud operations</h2>
+	</div>
+    <div class="row" >
+        <div class="col-md-3 register-left" style="padding-top: 90px;">
+            <img alt="" src="{% static 'image/settings.png' %}"/>
+            <h1><b style="color: red;">W</b><b style="color: orange;">E</b><b style="color: yellow;">L</b><b
+                    style="color:green;">C</b><b style="color: white;">O</b><b style="color: indigo;">M</b><b
+                    style="color: violet;">E</b></h1>
+        </div>
+        <div class="col-md-9 register-right">
+            <div class="tab-content" id="myTabContent">
+                <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="row register-form mt-5">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input class="form-control" name="SL_NO" placeholder="SL_NO" required type="number"/>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="ITEM_NAME" placeholder="ITEM_NAME" required
+                                           type="text"/>
+                                </div>
+								<div class="form-group">
+                                    <input class="form-control" name="DESCRIPTION" placeholder="Description" required
+                                           type="text"/>
+                                </div>
+                            </div>
+                            <div class="col-md-6 mt-4" style="position: relative;">
+                                <div class="vertical-center">
+                                    <input class="btnsignn btn-lg" style=" color: white; background-color: #0062cc;"
+                                       type="submit"
+                                       value="Create"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-4">
+	<div class="row">
+		<table class="table table-light">
+			<thead>
+			  <tr>
+				<th scope="col" st>SL_NO</th>
+				<th scope="col">ITEM_NAME</th>
+				<th scope="col">DESCRIPTION</th>
+				<th scope="col">ACTION</th>
+			  </tr>
+			</thead>
+			{% for i in context %}
+			<tbody>
+			  <tr>		
+				<td>{{i.SL_NO}}</td>
+				<td>{{i.ITEM_NAME}}</td>
+				<td>{{i.DESCRIPTION}}</td>
+				<td>	
+					<a href="{% url 'update_data' i.id  %}" class="btn btn-warning ">Update</a>
+					<a href="{% url 'delete_data' i.id %}" class="btn btn-danger ">Delete</a>
+				</td>
+			  </tr>
+			</tbody>
+			{% endfor %}
+		  </table>
+	</div>
+</div>
+
+
+
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
